@@ -30,7 +30,7 @@ var paths = {
  * 4. Rename the file to 'FILENAME.min.css'
  * 5. Minify the CSS
  * 6. Write the minified file to the destination directory
- **/
+ */
 gulp.task('process-styles', function(){
   return sass(paths.src.CssDir + '**/*.scss', {
     sourcemap: true,
@@ -52,7 +52,7 @@ gulp.task('process-styles', function(){
  * 4. Rename the file to 'FILENAME.min.js'
  * 2. Minify the concatenated .js file
  * 3. Write the minified file to the destination directory
- **/
+ */
 gulp.task('process-scripts', function(){
   return gulp.src(paths.src.JsDir + '**/*.js')
     .pipe(concat('main.js'))
@@ -62,8 +62,11 @@ gulp.task('process-scripts', function(){
     .pipe(gulp.dest(paths.dest.JsDir));
 });
 
-// Task that monitors javascript files for changes and
-// runs the 'process-scripts' task
+/** Task that monitors files for changes and performs preconfigured tasks
+ *
+ * 1. runs the 'process-styles' task when .scss files have changed
+ * 2. Runs the 'process-scripts' task when .js files have changed
+ */
 gulp.task('watch', function() {
   gulp.watch(paths.src.CssDir + '**/*.scss', ['process-styles']);
   gulp.watch(paths.src.JsDir + '**/*.js', ['process-scripts']);
