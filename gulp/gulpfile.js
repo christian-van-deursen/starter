@@ -6,7 +6,8 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
-    watch = require('gulp-watch');
+    watch = require('gulp-watch'),
+    livereload = require('gulp-livereload');
 
 // Store commonly used paths inside an object for easy configuration
 var paths = {
@@ -41,7 +42,8 @@ gulp.task('process-styles', function(){
     .pipe(gulp.dest(paths.dest.CssDir))
     .pipe(rename({suffix: '.min'}))
     .pipe(minifycss())
-    .pipe(gulp.dest(paths.dest.CssDir));
+    .pipe(gulp.dest(paths.dest.CssDir))
+    .pipe(livereload());
 });
 
 /** Task for processing javascript
@@ -59,7 +61,8 @@ gulp.task('process-scripts', function(){
     .pipe(gulp.dest(paths.dest.JsDir))
     .pipe(rename({suffix: '.min'}))
     .pipe(uglify())
-    .pipe(gulp.dest(paths.dest.JsDir));
+    .pipe(gulp.dest(paths.dest.JsDir))
+    .pipe(livereload());
 });
 
 /** Task that monitors files for changes and performs preconfigured tasks
@@ -68,6 +71,7 @@ gulp.task('process-scripts', function(){
  * 2. Runs the 'process-scripts' task when .js files have changed
  */
 gulp.task('watch', function() {
+  livereload.listen();
   gulp.watch(paths.src.CssDir + '**/*.scss', ['process-styles']);
   gulp.watch(paths.src.JsDir + '**/*.js', ['process-scripts']);
 });
