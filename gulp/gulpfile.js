@@ -56,7 +56,6 @@ gulp.task('process-styles', function(){
  * 4. Minify the concatenated .js file
  * 5. Write the minified file to the destination directory
  * 6. Reload the page in the browser
-
  */
 gulp.task('process-scripts', function(){
   return gulp.src(paths.src.JsDir + '**/*.js')
