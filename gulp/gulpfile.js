@@ -24,7 +24,7 @@ var paths = {
 
 /** Task for processing styles
  *
- * This task will do the following:
+ * This task does the following:
  * 1. Compile the main SCSS file to CSS
  * 2. Add browser prefixes
  * 3. Write the unminified file to the destination directory
@@ -49,7 +49,7 @@ gulp.task('process-styles', function(){
 
 /** Task for processing javascript
  *
- * This task will do the following:
+ * This task does the following:
  * 1. Concatenate all .js files inside the scripts directory
  * 2. Write the unminified file to the destination directory
  * 3. Rename the file to 'FILENAME.min.js'
@@ -69,6 +69,7 @@ gulp.task('process-scripts', function(){
 
 /** Task that monitors files for changes and performs preconfigured tasks
  *
+ * This task does the following:
  * 1. Start livereload
  * 2. runs the 'process-styles' task when .scss files have changed
  * 3. Runs the 'process-scripts' task when .js files have changed
