@@ -11,13 +11,13 @@ var gulp = require('gulp'),
 // Store commonly used paths inside an object for easy configuration
 var paths = {
   'src': {
-    'SassFile': 'src/styles/main.scss',
-    'CssDir': 'src/styles/',
-    'JsDir': 'src/scripts/'
+    'SassFile': 'sass/style.scss',
+    'CssDir': 'sass/',
+    'JsDir': 'js/'
   },
   'dest': {
-    'CssDir': 'dest/styles/',
-    'JsDir': 'dest/scripts/'
+    'CssDir': '',
+    'JsDir': 'js/built/'
   }
 };
 
