@@ -31,6 +31,7 @@ var paths = {
  * 4. Rename the file to 'FILENAME.min.css'
  * 5. Minify the CSS
  * 6. Write the minified file to the destination directory
+ * 7. Reload the page in the browser
  */
 gulp.task('process-styles', function(){
   return sass(paths.src.CssDir + '**/*.scss', {
@@ -51,9 +52,11 @@ gulp.task('process-styles', function(){
  * This task will do the following:
  * 1. Concatenate all .js files inside the scripts directory
  * 2. Write the unminified file to the destination directory
- * 4. Rename the file to 'FILENAME.min.js'
- * 2. Minify the concatenated .js file
- * 3. Write the minified file to the destination directory
+ * 3. Rename the file to 'FILENAME.min.js'
+ * 4. Minify the concatenated .js file
+ * 5. Write the minified file to the destination directory
+ * 6. Reload the page in the browser
+
  */
 gulp.task('process-scripts', function(){
   return gulp.src(paths.src.JsDir + '**/*.js')
@@ -67,8 +70,9 @@ gulp.task('process-scripts', function(){
 
 /** Task that monitors files for changes and performs preconfigured tasks
  *
- * 1. runs the 'process-styles' task when .scss files have changed
- * 2. Runs the 'process-scripts' task when .js files have changed
+ * 1. Start livereload
+ * 2. runs the 'process-styles' task when .scss files have changed
+ * 3. Runs the 'process-scripts' task when .js files have changed
  */
 gulp.task('watch', function() {
   livereload.listen();
